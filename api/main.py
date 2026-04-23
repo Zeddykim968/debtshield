@@ -2,6 +2,7 @@ import sys
 import os
 import io
 import tempfile
+import traceback
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -46,6 +47,10 @@ if mode == "Upload M-Pesa Statement":
         type=["pdf", "csv"],
         help="M-Pesa statement export. PDFs are parsed with pdfplumber; CSVs need columns date, details, amount, balance.",
     )
+    pdf_password = st.sidebar.text_input(
+        "PDF password (if any)", type="password",
+        help="Safaricom often emails password-protected PDFs.",
+    )
 
     if uploaded is not None:
         try:
@@ -53,20 +58,27 @@ if mode == "Upload M-Pesa Statement":
                 with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
                     tmp.write(uploaded.read())
                     tmp_path = tmp.name
-                raw = extract_mpesa_data(tmp_path)
+                raw = extract_mpesa_data(tmp_path, password=pdf_password or None)
                 os.unlink(tmp_path)
             else:
                 raw = load_mpesa_csv(uploaded)
 
-            if raw.empty:
-                st.error("No tabular data could be extracted from this file.")
+            if raw is None or raw.empty:
+                st.error("No tabular data could be extracted from this file. If your PDF is password-protected, enter the password in the sidebar.")
             else:
+                with st.expander("Raw parsed rows (debug)"):
+                    st.dataframe(raw.head(20), use_container_width=True)
                 df_clean = clean_mpesa_data(raw)
-                df_clean = classify_the_data(df_clean)
-                features = generate_features(df_clean)
-                st.sidebar.success(f"Parsed {len(df_clean)} transactions")
+                if df_clean.empty:
+                    st.error("File parsed, but no valid transaction rows were found after cleaning. Check the column layout.")
+                else:
+                    df_clean = classify_the_data(df_clean)
+                    features = generate_features(df_clean)
+                    st.sidebar.success(f"Parsed {len(df_clean)} transactions")
         except Exception as e:
             st.error(f"Failed to parse statement: {e}")
+            with st.expander("Error details"):
+                st.code(traceback.format_exc())
     else:
         st.info("👈 Upload an M-Pesa PDF or CSV in the sidebar to begin, or switch to Manual Entry.")
 
