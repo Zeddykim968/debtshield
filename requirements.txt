@@ -4,3 +4,11 @@ numpy
 matplotlib
 plotly
 scikit-learn
+joblib
+matplotlib
+numpy
+pandas
+pdfplumber
+plotly
+scikit-learn
+streamlit
