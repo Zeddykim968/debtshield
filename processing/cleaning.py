@@ -39,11 +39,16 @@ def clean_mpesa_data(df):
     out = pd.DataFrame()
 
     if date_col is not None:
-        out["date"] = pd.to_datetime(df[date_col], errors="coerce")
+        raw_date = df[date_col]
     elif df.shape[1] >= 1:
-        out["date"] = pd.to_datetime(df.iloc[:, 0], errors="coerce")
+        raw_date = df.iloc[:, 0]
     else:
-        out["date"] = pd.NaT
+        raw_date = pd.Series([None] * len(df))
+
+    parsed = pd.to_datetime(raw_date, errors="coerce")
+    if parsed.notna().sum() < max(1, len(parsed) // 4):
+        parsed = pd.to_datetime(raw_date, errors="coerce", dayfirst=True)
+    out["date"] = parsed.ffill()
 
     if details_col is not None:
         out["details"] = df[details_col].astype(str)
@@ -77,7 +82,11 @@ def clean_mpesa_data(df):
     else:
         out["balance"] = pd.NA
 
-    out = out.dropna(subset=["date", "amount"]).reset_index(drop=True)
+    out = out.dropna(subset=["amount"]).reset_index(drop=True)
+    if out["date"].isna().all():
+        out["date"] = pd.Timestamp.today().normalize()
+    else:
+        out["date"] = out["date"].ffill().bfill()
     return out
 
 

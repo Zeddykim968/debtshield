@@ -67,10 +67,11 @@ if mode == "Upload M-Pesa Statement":
                 st.error("No tabular data could be extracted from this file. If your PDF is password-protected, enter the password in the sidebar.")
             else:
                 with st.expander("Raw parsed rows (debug)"):
+                    st.write("Detected columns:", list(raw.columns))
                     st.dataframe(raw.head(20), use_container_width=True)
                 df_clean = clean_mpesa_data(raw)
                 if df_clean.empty:
-                    st.error("File parsed, but no valid transaction rows were found after cleaning. Check the column layout.")
+                    st.error("File parsed, but no valid transaction rows were found after cleaning. Open the 'Raw parsed rows' panel above and share the column names so I can adjust the parser.")
                 else:
                     df_clean = classify_the_data(df_clean)
                     features = generate_features(df_clean)
