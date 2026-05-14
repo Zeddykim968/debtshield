@@ -1,90 +1,87 @@
 # DebtShield 🛡️
 
-AI-powered financial risk assessment that combines **Machine Learning** with **Monte Carlo simulation** to predict default probability.
+**DebtShield** is a data-driven financial risk assessment project that uses **Machine Learning** and **Monte Carlo simulation** to support responsible lending, financial inclusion, and early financial risk detection.
 
-## What is DebtShield?
-
-DebtShield predicts the likelihood of financial default by analyzing transaction data. It uses a hybrid approach:
-- **ML Model** – Predicts default risk from 14 financial features
-- **Monte Carlo Simulation** – Models financial scenarios probabilistically
-- **Hybrid Score** – Combines both for more accurate risk assessment
-
-## Quick Start
-
-```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the web app
-streamlit run api/main.py --server.port 5000 --server.address 0.0.0.0
-```
-
-## Key Functions
-
-### `generate_risk_report_from_features()`
-Creates a complete risk assessment report:
-```python
-from predict import generate_risk_report_from_features
-
-features = {
-    "total_income": 50000,
-    "total_expenses": 35000,
-    "savings_ratio": 0.30,
-    "coverage_ratio": 1.43,
-    "days_without_income": 5,
-    # ... 9 more features
-}
-
-report = generate_risk_report_from_features(features)
-# Returns: ml_probability, simulation_probability, hybrid_probability, risk_level
-```
-
-### `ml_probability_from_features()`
-Gets ML-based default probability with fallback heuristics if model unavailable.
-
-### `hybrid_risk_score()`
-Converts probability (0-1) to readable score (0-100).
-
-## Core Modules
-
-| Module | Purpose |
-|--------|---------|
-| `predict.py` | Orchestrates ML + Monte Carlo + hybrid scoring |
-| `models/hybrid_score.py` | Combines ML and simulation probabilities |
-| `risk_simulation/monte_carlo.py` | Probabilistic financial scenario modeling |
-| `ingestion/` | Parses financial documents (M-Pesa PDFs) |
-
-## Risk Levels
-
-| Probability | Level | Status |
-|------------|-------|--------|
-| < 20% | 🟢 Low | Financially stable |
-| 20-50% | 🟡 Moderate | Some stress indicators |
-| > 50% | 🔴 High | High default risk |
-
-## Features Analyzed
-
-- Income/expense stability and volatility
-- Savings and coverage ratios
-- Balance trends
-- Payment history (transaction frequency, gaps)
-- Debt-to-income ratios
-
-## Tech Stack
-
-- **Frontend**: Streamlit
-- **ML**: scikit-learn
-- **Data**: pandas, numpy
-- **Visualization**: Plotly, Matplotlib
-- **Document Parsing**: pdfplumber
-
-## What Makes DebtShield Unique
-
-✨ **Hybrid Approach** – Combines ML predictions with stochastic simulations for robust risk scoring  
-✨ **Financial Scenario Modeling** – Monte Carlo simulations project outcomes under various conditions  
-✨ **Intelligent Fallbacks** – Heuristic-based probabilities when ML model unavailable  
-✨ **Multi-source Support** – Processes PDFs and transaction exports  
+The project analyzes transaction and financial behavior data to estimate default probability and generate simplified risk insights for individuals and community-based financial institutions such as SACCOs.
 
 ---
 
-**DebtShield** – Intelligent debt default prediction 🛡️
+## Mission
+
+To promote responsible lending and financial inclusion by developing accessible, data-driven risk assessment tools that help underserved individuals and financial institutions make informed financial decisions.
+
+---
+
+## Objectives
+
+- Build an AI-powered financial risk assessment system using machine learning and probabilistic modeling.
+- Support SACCOs and small financial institutions with simplified credit risk insights.
+- Encourage responsible borrowing through early financial stress detection.
+- Explore how data science can improve financial accessibility and reduce preventable debt defaults in underserved communities.
+- Develop a scalable financial analytics platform that combines predictive modeling with practical social impact.
+
+---
+
+## What DebtShield Does
+
+DebtShield combines:
+
+- **Machine Learning Models** to predict financial default risk
+- **Monte Carlo Simulations** to model uncertain financial scenarios
+- **Hybrid Risk Scoring** to improve prediction reliability
+
+The system currently analyzes:
+
+- income and expense stability
+- savings behavior
+- debt-to-income ratios
+- transaction patterns
+- financial resilience indicators
+
+---
+
+## Current Development Stage
+
+DebtShield is currently an early-stage research and development project focused on:
+
+- model experimentation
+- financial data analysis
+- risk simulation
+- prototype development using transaction-based datasets
+
+---
+
+## Social Impact Focus
+
+DebtShield aligns with:
+
+- **SDG 1** – No Poverty
+- **SDG 8** – Decent Work and Economic Growth
+- **SDG 9** – Industry, Innovation and Infrastructure
+- **SDG 10** – Reduced Inequalities
+
+by exploring how data science and financial analytics can strengthen financial resilience and expand access to fairer financial systems.
+
+---
+
+## Tech Stack
+
+- Python
+- Streamlit
+- scikit-learn
+- pandas
+- numpy
+- Monte Carlo simulation
+- Plotly
+- Matplotlib
+- pdfplumber
+
+---
+
+## Vision
+
+To build intelligent and accessible financial analytics tools that help create a more financially resilient and inclusive society.
+
+---
+
+**DebtShield** – Using data science and financial analytics to support smarter and more inclusive financial decisions. 🛡️
