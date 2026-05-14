@@ -1,23 +1,23 @@
 # DebtShield 🛡️
 
-**DebtShield** is a data-driven financial risk assessment project that uses **Machine Learning** and **Monte Carlo simulation** to support responsible lending, financial inclusion, and early financial risk detection.
+**DebtShield** is a data-driven financial wellness and risk assessment project that uses **Machine Learning** and **Monte Carlo simulation** to help people make better financial decisions before they fall into serious debt or financial stress.
 
-The project analyzes transaction and financial behavior data to estimate default probability and generate simplified risk insights for individuals and community-based financial institutions such as SACCOs.
+The project analyzes financial and transaction patterns to identify risky spending habits, income instability, and possible future financial challenges. Its goal is to encourage smarter borrowing, better financial planning, and improved financial awareness, especially among young people and underserved communities.
 
 ---
 
 ## Mission
 
-To promote responsible lending and financial inclusion by developing accessible, data-driven risk assessment tools that help underserved individuals and financial institutions make informed financial decisions.
+To promote financial awareness and responsible decision-making by developing accessible, data-driven tools that help people better understand and manage financial risk.
 
 ---
 
 ## Objectives
 
 - Build an AI-powered financial risk assessment system using machine learning and probabilistic modeling.
-- Support SACCOs and small financial institutions with simplified credit risk insights.
-- Encourage responsible borrowing through early financial stress detection.
-- Explore how data science can improve financial accessibility and reduce preventable debt defaults in underserved communities.
+- Help individuals better understand their financial habits and potential financial risks.
+- Encourage smarter borrowing and better financial planning through early financial stress detection.
+- Explore how data science can improve financial awareness and reduce preventable debt problems in underserved communities.
 - Develop a scalable financial analytics platform that combines predictive modeling with practical social impact.
 
 ---
@@ -26,7 +26,7 @@ To promote responsible lending and financial inclusion by developing accessible,
 
 DebtShield combines:
 
-- **Machine Learning Models** to predict financial default risk
+- **Machine Learning Models** to estimate financial risk
 - **Monte Carlo Simulations** to model uncertain financial scenarios
 - **Hybrid Risk Scoring** to improve prediction reliability
 
@@ -53,21 +53,14 @@ DebtShield is currently an early-stage research and development project focused 
 
 ## Social Impact Focus
 
-DebtShield aligns with:
-
-- **SDG 1** – No Poverty
-- **SDG 8** – Decent Work and Economic Growth
-- **SDG 9** – Industry, Innovation and Infrastructure
-- **SDG 10** – Reduced Inequalities
-
-by exploring how data science and financial analytics can strengthen financial resilience and expand access to fairer financial systems.
+DebtShield explores how data science and financial analytics can support financial literacy, financial resilience, and more informed financial decision-making.
 
 ---
 
 ## Tech Stack
 
 - Python
-- Streamlit
+- Streamlit(for the prototpe )
 - scikit-learn
 - pandas
 - numpy
@@ -80,8 +73,8 @@ by exploring how data science and financial analytics can strengthen financial r
 
 ## Vision
 
-To build intelligent and accessible financial analytics tools that help create a more financially resilient and inclusive society.
+To build intelligent and accessible financial analytics tools that help individuals make more informed and financially sustainable decisions.
 
 ---
 
-**DebtShield** – Using data science and financial analytics to support smarter and more inclusive financial decisions. 🛡️
+**DebtShield** – Using data science and financial analytics to support smarter financial decisions. 🛡️
